@@ -4,7 +4,8 @@
   "description": "ekleans cleaning agency website development",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/HansonJoel/EKleans-Cleaning-Agency-project/issues"
   },
-  "homepage": "https://github.com/HansonJoel/EKleans-Cleaning-Agency-project#readme"
+  "homepage": "https://github.com/HansonJoel/EKleans-Cleaning-Agency-project#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
