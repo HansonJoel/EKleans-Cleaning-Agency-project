@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ekleans | Inspection-Ready Cleaning</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">Ekleans</div>
+      <nav>
+        <a href="#">Services</a>
+        <a href="#">Pricing</a>
+        <a href="#">How It Works</a>
+      </nav>
+      <button class="btn-primary">Book Now</button>
+    </header>
+
+    <main class="hero-section">
+      <div class="hero-content">
+        <span class="badge">Available 24/7 — Same day service</span>
+        <h1>
+          Inspection-Ready Cleaning.<br /><span class="highlight"
+            >Fast. Reliable.</span
+          >
+        </h1>
+        <p>
+          We handle post-construction, renovation, and deep cleaning — so your
+          space is ready for handover or move-in.
+        </p>
+        <div class="cta-group">
+          <button class="btn-primary">Get a Quote →</button>
+          <button class="btn-secondary">Book via WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="hero-form-container">
+        <div class="form-card">
+          <h3>Quick Booking</h3>
+          <p>We'll call you back within 2 hours</p>
+          <form id="bookingForm">
+            <div class="input-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="+234 800 000 0000"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <label for="serviceType">Service Type</label>
+              <select id="serviceType" name="serviceType" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="post-construction">
+                  Post-Construction Cleaning
+                </option>
+                <option value="move-in-out">Move-In / Move-Out Cleaning</option>
+                <option value="commercial">Office & Commercial Cleaning</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="preferredDate"
+                >Preferred Date
+                <span style="font-size: 0.8em; opacity: 0.7"
+                  >(optional)</span
+                ></label
+              >
+              <input type="date" id="preferredDate" name="preferredDate" />
+            </div>
+
+            <button type="submit" class="btn-submit">🗓 Confirm Request</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
