@@ -1,0 +1,19 @@
+{
+  "name": "ekleans-cleaning-agency-project",
+  "version": "1.0.0",
+  "description": "ekleans cleaning agency website development",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HansonJoel/EKleans-Cleaning-Agency-project.git"
+  },
+  "author": "Joel Hanson and Ebube Nwagbara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HansonJoel/EKleans-Cleaning-Agency-project/issues"
+  },
+  "homepage": "https://github.com/HansonJoel/EKleans-Cleaning-Agency-project#readme"
+}
