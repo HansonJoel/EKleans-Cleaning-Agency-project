@@ -6,7 +6,7 @@ document.getElementById("bookingForm").addEventListener("submit", async (e) => {
     fullName: document.getElementById("fullName").value,
     phone: document.getElementById("phone").value,
     serviceType: document.getElementById("serviceType").value,
-    preferredDate: document.getElementById("preferredDate").value || null, // Send null if left blank
+    preferredDate: document.getElementById("preferredDate").value,
   };
 
   try {

@@ -18,7 +18,7 @@ const bookingSchema = new mongoose.Schema(
     },
     preferredDate: {
       type: Date,
-      default: null,
+      required: [true, "Please enter a date"],
     },
     status: {
       type: String,
