@@ -20,7 +20,7 @@ exports.createBooking = async (req, res) => {
       fullName,
       phone,
       serviceType,
-      preferredDate: preferredDate || null,
+      preferredDate: preferredDate,
       notes: notes || null,
     });
 
