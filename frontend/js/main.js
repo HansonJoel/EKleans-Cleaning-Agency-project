@@ -4,6 +4,7 @@ document.getElementById("bookingForm").addEventListener("submit", async (e) => {
   // Gather data from the form, including the new optional date
   const formData = {
     fullName: document.getElementById("fullName").value,
+    email: document.getElementById("email").value,
     phone: document.getElementById("phone").value,
     serviceType: document.getElementById("serviceType").value,
     preferredDate: document.getElementById("preferredDate").value,

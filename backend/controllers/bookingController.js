@@ -8,7 +8,7 @@ exports.createBooking = async (req, res) => {
     // 1. Grab the data sent from the frontend
     const { fullName, phone, serviceType, preferredDate, notes } = req.body;
     // 2. Basic validation (mongoose will also check, but it's good practice here too)
-    if (!fullName || !phone || !serviceType) {
+    if (!fullName || !email || !phone || !serviceType) {
       return res.status(400).json({
         success: false,
         message: "Please provide all required fields",
@@ -19,6 +19,7 @@ exports.createBooking = async (req, res) => {
     const booking = await Booking.create({
       fullName,
       phone,
+      email,
       serviceType,
       preferredDate: preferredDate,
       notes: notes || null,
