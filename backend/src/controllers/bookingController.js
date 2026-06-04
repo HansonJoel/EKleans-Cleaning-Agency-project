@@ -1,4 +1,5 @@
 const Booking = require("../models/booking");
+const Client = require("../models/Client");
 
 // @desc    Create new booking request
 // @route   POST /api/bookings
@@ -7,8 +8,30 @@ const Booking = require("../models/booking");
 
 exports.createBooking = async (req, res) => {
   try {
-    // Validation is already done by the middleware!
-    const booking = await Booking.create(req.body);
+    const { fullName, email, phone, serviceType, preferredDate } = req.body;
+
+    // 1. Find the hidden account by email
+    let client = await Client.findOne({ email: email.toLowerCase() });
+
+    // 2. If no account exists, create one silently
+    if (!client) {
+      client = await Client.create({ fullName, email, phone });
+    } else {
+      // Optional: Update details if they used a new phone number
+      client.fullName = fullName;
+      client.phone = phone;
+      await client.save();
+    }
+
+    // 3. Create the booking and link it to the Client's _id
+    const booking = await Booking.create({
+      client: client._id,
+      fullName,
+      email,
+      phone,
+      serviceType,
+      preferredDate,
+    });
 
     res.status(201).json({
       success: true,
@@ -23,11 +46,12 @@ exports.createBooking = async (req, res) => {
 
 // @desc    Get all bookings (For the Admin Dashboard)
 // @route   GET /api/bookings
-// @access  Private (We will add authentication later, for now it's open)
 exports.getBookings = async (req, res) => {
   try {
-    // Fetch all bookings from the database, sorted by newest first
-    const bookings = await Booking.find().sort({ createdAt: -1 });
+    // UPDATED: .populate('client') replaces the ID with the actual Client object data!
+    const bookings = await Booking.find()
+      .populate("client", "fullName email phone")
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,

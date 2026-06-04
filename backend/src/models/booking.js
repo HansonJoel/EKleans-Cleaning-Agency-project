@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema(
   {
+    // NEW: The relational link to the hidden Client account
+    client: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Client",
+      required: true,
+    },
     fullName: {
       type: String,
       required: [true, "Please add a full name"],
@@ -38,7 +44,7 @@ const bookingSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true,
   },
 );
 

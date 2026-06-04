@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const bookingRoutes = require("./routes/bookingRoutes");
+const clientRoutes = require("./routes/clientRoutes");
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors()); // Allow cross-origin requests from your frontend
 app.use(express.json()); // Parse incoming JSON requests
 
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/clients", clientRoutes);
 
 // Basic route to test the server
 app.get("/", (req, res) => {
