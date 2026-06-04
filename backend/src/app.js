@@ -1,10 +1,12 @@
 const express = require("express");
+const morgan = require("morgan");
 const cors = require("cors");
 const bookingRoutes = require("./routes/bookingRoutes");
 
 const app = express();
 
 // Middleware
+app.use(morgan("dev"));
 app.use(cors()); // Allow cross-origin requests from your frontend
 app.use(express.json()); // Parse incoming JSON requests
 
