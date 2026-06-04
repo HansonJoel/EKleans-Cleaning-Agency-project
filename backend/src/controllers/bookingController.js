@@ -3,43 +3,21 @@ const Booking = require("../models/booking");
 // @desc    Create new booking request
 // @route   POST /api/bookings
 // @access  Public (Landing page)
+// src/controllers/bookingController.js
+
 exports.createBooking = async (req, res) => {
   try {
-    // 1. Grab the data sent from the frontend
-    const { fullName, email, phone, serviceType, preferredDate, notes } =
-      req.body;
-    // 2. Basic validation (mongoose will also check, but it's good practice here too)
-    if (!fullName || !email || !phone || !serviceType) {
-      return res.status(400).json({
-        success: false,
-        message: "Please provide all required fields",
-      });
-    }
+    // Validation is already done by the middleware!
+    const booking = await Booking.create(req.body);
 
-    // 3. Create a new booking in the database
-    const booking = await Booking.create({
-      fullName,
-      email,
-      phone,
-      serviceType,
-      preferredDate: preferredDate,
-      notes: notes || null,
-    });
-
-    // 4. Send a success response back to the frontend
     res.status(201).json({
-      status: "success",
-      data: {
-        Booking: booking,
-      },
-      message: "Booking created Successgully",
+      success: true,
+      data: booking,
+      message: "Booking created successfully",
     });
   } catch (error) {
-    res.status(500).json({
-      status: "error",
-      message: "Error creating booking",
-    });
-    console.log(error);
+    console.error("Error creating booking:", error);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 };
 

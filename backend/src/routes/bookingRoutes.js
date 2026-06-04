@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const {
+  validateBookingRequest,
+} = require("../middlewares/bookings.middleware");
 
 // Import our controller functions
 const {
@@ -11,7 +14,7 @@ const {
 // Note: The base path '/api/bookings' will be set in app.js
 router
   .route("/")
-  .post(createBooking) // Handles POST requests from the landing page
+  .post(validateBookingRequest, createBooking) // Handles POST requests from the landing page
   .get(getBookings); // Handles GET requests from the admin dashboard
 
 module.exports = router;

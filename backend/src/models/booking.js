@@ -5,15 +5,14 @@ const bookingSchema = new mongoose.Schema(
     fullName: {
       type: String,
       required: [true, "Please add a full name"],
+      lowercase: true,
       trim: true,
     },
     email: {
       type: String,
       required: [true, "Please add an email address"],
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Please add a valid email",
-      ],
+      trim: true,
+      lowercase: true,
     },
     phone: {
       type: String,
