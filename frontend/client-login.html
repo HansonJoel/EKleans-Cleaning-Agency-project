@@ -11,59 +11,48 @@
       <div class="auth-header">
         <div class="auth-icon">✨</div>
         <h2>Client Dashboard Login</h2>
-        <p id="authSubtitle">
-          Enter your email to receive a secure access code
-        </p>
+        <p>Sign in to manage your cleaning schedules</p>
       </div>
 
       <div class="auth-card">
-        <form id="requestTokenForm">
+        <form id="clientLoginForm">
           <div class="form-group">
-            <div class="form-header">
-              <label for="clientEmail">Email Address</label>
-            </div>
+            <label for="email">Email Address</label>
             <div class="input-wrapper">
               <span class="input-icon">✉️</span>
               <input
                 type="email"
-                id="clientEmail"
+                id="email"
                 class="form-control"
                 placeholder="you@email.com"
                 required
               />
             </div>
           </div>
-          <button type="submit" class="btn-primary">Send Login Code</button>
-        </form>
 
-        <form id="verifyTokenForm" style="display: none">
           <div class="form-group">
-            <div class="form-header">
-              <label for="loginCode">6-Digit Access Code</label>
-            </div>
+            <label for="password">Password</label>
             <div class="input-wrapper">
               <span class="input-icon">🔑</span>
               <input
-                type="text"
-                id="loginCode"
+                type="password"
+                id="password"
                 class="form-control"
-                placeholder="123456"
-                maxlength="6"
+                placeholder="Enter password"
                 required
               />
             </div>
           </div>
-          <button type="submit" class="btn-primary">Verify & Sign In</button>
+
+          <button type="submit" class="btn-primary">Sign In</button>
         </form>
       </div>
 
       <div style="text-align: center; margin-top: 1.5rem">
         <a href="index.html" class="forgot-link">← Back to Homepage</a>
       </div>
-
       <div class="auth-footer">Ekleans Industrial © 2026 — Client Portal</div>
     </div>
-
-    <script src="js/client-auth.js"></script>
+    <script src="js/client-login.js"></script>
   </body>
 </html>
