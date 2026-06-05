@@ -27,6 +27,11 @@ html {
   margin: 0 15px;
 }
 
+.navbar nav a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
 .hero-section {
   display: flex;
   justify-content: space-between;
