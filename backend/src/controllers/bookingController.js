@@ -10,20 +10,29 @@ exports.createBooking = async (req, res) => {
   try {
     const { fullName, email, phone, serviceType, preferredDate } = req.body;
 
-    // 1. Find the hidden account by email
-    let client = await Client.findOne({ email: email.toLowerCase() });
+    // 1. Find the client AND explicitly ask Mongoose to include the password field for this check
+    let client = await Client.findOne({ email: email.toLowerCase() }).select(
+      "+password",
+    );
+    let actionFlag = "";
 
-    // 2. If no account exists, create one silently
+    // 2. Logic: Decide what action the frontend needs to take
     if (!client) {
+      // Scenario A: Completely new user
       client = await Client.create({ fullName, email, phone });
-    } else {
-      // Optional: Update details if they used a new phone number
+      actionFlag = "set_password";
+    } else if (!client.password) {
+      // Scenario A part 2: Returning user, but they never finished setting a password
       client.fullName = fullName;
       client.phone = phone;
       await client.save();
+      actionFlag = "set_password";
+    } else {
+      // Scenario B: Returning user who HAS a password
+      actionFlag = "enter_password";
     }
 
-    // 3. Create the booking and link it to the Client's _id
+    // 3. Create the booking
     const booking = await Booking.create({
       client: client._id,
       fullName,
@@ -33,10 +42,12 @@ exports.createBooking = async (req, res) => {
       preferredDate,
     });
 
+    // 4. Send back the booking ID and the Action Flag
     res.status(201).json({
       success: true,
-      data: booking,
-      message: "Booking created successfully",
+      action: actionFlag,
+      bookingId: booking._id,
+      message: "Action required to secure booking",
     });
   } catch (error) {
     console.error("Error creating booking:", error);
